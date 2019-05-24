@@ -6,16 +6,44 @@ library(data.table)
 
 maf.mela = fread("Neoantigen-Melanoma/neo_melanoma.maf.txt")
 maf.mela[, Tumor_Sample_Barcode := paste0("sample", Tumor_Sample_Barcode)]
+colnames(maf.mela) = c("Tumor_Sample_Barcode",
+                       "Hugo_Symbol",
+                       "Transcript_ID",
+                       "Variant_Classification",
+                       "Variant_Type",
+                       "NCBI_Build",
+                       "Chromosome",
+                       "Start_position",
+                       "End_position",
+                       "Strand",
+                       "Reference_Allele",
+                       "Tumor_Seq_Allele1",
+                       "Tumor_Seq_Allele2",
+                       "cDNA_Change",
+                       "Codon_Change",
+                       "Protein_Change")
+  
+
 fwrite(maf.mela, file = "neo_mela.maf", sep = "\t")
 
 hla.mela = fread("Neoantigen-Melanoma/hla_melanoma.txt")
 colnames(hla.mela) = c("Tumor_Sample_Barcode", "A1", "A2", "B1", "B2")
+
+correct = function(x) {
+  ifelse(nchar(x) == 4, paste0("0", x), x)
+}
+
+hla.mela$A1 =  correct(hla.mela$A1)
+hla.mela$A2 =  correct(hla.mela$A2)
+hla.mela$B1 =  correct(hla.mela$B1)
+hla.mela$B2 =  correct(hla.mela$B2)
+
 hla.mela[, `:=`(Tumor_Sample_Barcode = paste0("sample", Tumor_Sample_Barcode),
                 HLA = paste(
                   paste("HLA-A", A1, sep = "*"),
                   paste("HLA-A", A2, sep = "*"),
-                  paste("HLB-A", B1, sep = "*"),
-                  paste("HLB-A", B2, sep = "*"),
+                  paste("HLA-B", B1, sep = "*"),
+                  paste("HLA-B", B2, sep = "*"),
                   sep = ","
                 ))]
 hla.mela[, c("A1","A2", "B1", "B2"):=NULL]

@@ -1,4 +1,4 @@
-Tumor_Sample_Barcode	Hugo Symbol	Transcript ID	Variant Classification	Variant Type	NCBI Build	Chromosome	Start position	End position	Strand	Reference Allele	Tumor Seq Allele1	Tumor Seq Allele2	cDNA Change	Codon Change	Protein Change
+Tumor_Sample_Barcode	Hugo_Symbol	Transcript_ID	Variant_Classification	Variant_Type	NCBI_Build	Chromosome	Start_position	End_position	Strand	Reference_Allele	Tumor_Seq_Allele1	Tumor_Seq_Allele2	cDNA_Change	Codon_Change	Protein_Change
 sample1	CASP5	uc010ruz.1	Frame_Shift_Del	DEL	37	11	104874011	104874011	+	T	T	-	c.572delA	c.(571-573)aatfs	p.N191fs
 sample1	MED12L	uc003eyp.3	In_Frame_Del	DEL	37	3	151148114	151148116	+	CAG	CAG	-	c.6331_6333delCAG	c.(6331-6333)cagdel	p.Q2115del
 sample1	PTPN21	uc001xwv.4	In_Frame_Del	DEL	37	14	88945628	88945630	+	TCC	TCC	-	c.2145_2147delGGA	c.(2143-2148)gaggac>gac	p.E715del
